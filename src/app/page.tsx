@@ -540,11 +540,13 @@ function MyActivityCard() {
           icon={<BookmarkSimple size={20} weight="duotone" />}
           value="30"
           label="Saved Properties"
+          href="/my-interests"
         />
         <ActivityTile
           icon={<LockSimpleOpen size={20} weight="duotone" />}
           value="42"
           label="Unlocked"
+          href="/my-interests?tab=contacted"
         />
         <ActivityTile
           icon={<Database size={20} weight="duotone" />}
@@ -560,13 +562,15 @@ function ActivityTile({
   icon,
   value,
   label,
+  href,
 }: {
   icon: React.ReactNode;
   value: string;
   label: string;
+  href?: string;
 }) {
-  return (
-    <div className="rounded-xl bg-[#f6f7fb] px-2 py-2.5 text-center">
+  const content = (
+    <>
       <div className="mx-auto grid h-8 w-8 place-items-center rounded-lg bg-white text-[#2c39d6]">
         {icon}
       </div>
@@ -574,6 +578,23 @@ function ActivityTile({
         {value}
       </div>
       <div className="mt-1 text-[10.5px] text-[#6c7693]">{label}</div>
+    </>
+  );
+
+  if (href) {
+    return (
+      <a
+        href={href}
+        className="block rounded-xl bg-[#f6f7fb] px-2 py-2.5 text-center transition hover:bg-[#eef1ff]"
+      >
+        {content}
+      </a>
+    );
+  }
+
+  return (
+    <div className="rounded-xl bg-[#f6f7fb] px-2 py-2.5 text-center">
+      {content}
     </div>
   );
 }
