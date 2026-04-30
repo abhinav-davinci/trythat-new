@@ -27,6 +27,8 @@ import {
   Crown,
 } from "@phosphor-icons/react/dist/ssr";
 
+const DATA_TERMINAL_SSO_URL = `https://data-terminal.trythat.ai/sso-login?token=${process.env.NEXT_PUBLIC_DT_DEMO_TOKEN ?? ""}`;
+
 export default function Home() {
   return (
     <div className="min-h-screen w-full bg-[#f4f6fb] text-[#0b1856]">
@@ -466,10 +468,15 @@ function DataTerminalCard() {
         <MiniBars />
       </div>
 
-      <button className="mt-5 flex w-full items-center justify-center gap-2 rounded-xl border border-[#2c39d6] bg-white py-3 text-[14px] font-semibold text-[#2c39d6] transition hover:bg-[#f1f3ff]">
+      <a
+        href={DATA_TERMINAL_SSO_URL}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="mt-5 flex w-full items-center justify-center gap-2 rounded-xl border border-[#2c39d6] bg-white py-3 text-[14px] font-semibold text-[#2c39d6] transition hover:bg-[#f1f3ff]"
+      >
         It&apos;s Live - Visit Data Terminal
         <ArrowRight size={16} weight="bold" />
-      </button>
+      </a>
     </div>
   );
 }
