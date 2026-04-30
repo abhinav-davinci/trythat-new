@@ -720,6 +720,7 @@ function RequestDataCard() {
 
       <div className="mt-3 flex flex-col gap-2.5">
         <RequestItem
+          href="/request-data?tab=agreement"
           icon={<FileText size={18} weight="regular" />}
           title="Agreement / Deed"
           subtitle="Get property registration documents"
@@ -731,6 +732,7 @@ function RequestDataCard() {
           showView
         />
         <RequestItem
+          href="/request-data?tab=transaction"
           icon={<CurrencyInr size={18} weight="regular" />}
           title="Transaction Data"
           subtitle="Request recent property transaction details"
@@ -740,6 +742,7 @@ function RequestDataCard() {
           ]}
         />
         <RequestItem
+          href="/request-data?tab=listing"
           icon={<Buildings size={18} weight="regular" />}
           title="Listing Data"
           subtitle=""
@@ -752,20 +755,30 @@ function RequestDataCard() {
 type StatPill = { dot: string; label: string; value: string };
 
 function RequestItem({
+  href,
   icon,
   title,
   subtitle,
   stats,
   showView,
 }: {
+  href?: string;
   icon: React.ReactNode;
   title: string;
   subtitle: string;
   stats?: StatPill[];
   showView?: boolean;
 }) {
+  const Wrapper = href ? "a" : "div";
   return (
-    <div className="rounded-xl border border-[#eceff7] bg-[#fafbff] px-4 py-3">
+    <Wrapper
+      {...(href ? { href } : {})}
+      className={
+        href
+          ? "block rounded-xl border border-[#eceff7] bg-[#fafbff] px-4 py-3 transition hover:border-[#c5c7ff] hover:bg-[#f3f5ff]"
+          : "rounded-xl border border-[#eceff7] bg-[#fafbff] px-4 py-3"
+      }
+    >
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-3">
           <span className="grid h-9 w-9 place-items-center rounded-lg bg-white text-[#2c39d6] ring-1 ring-[#eceff7]">
@@ -800,13 +813,13 @@ function RequestItem({
             ))}
           </div>
           {showView && (
-            <button className="flex items-center gap-1 text-[12px] font-semibold text-[#2c39d6]">
+            <span className="flex items-center gap-1 text-[12px] font-semibold text-[#2c39d6]">
               <Eye size={14} weight="regular" /> View
-            </button>
+            </span>
           )}
         </div>
       )}
-    </div>
+    </Wrapper>
   );
 }
 
