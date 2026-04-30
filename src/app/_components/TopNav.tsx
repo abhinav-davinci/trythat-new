@@ -35,7 +35,15 @@ const NAV_ITEMS: NavItem[] = [
   { key: "dashboard", label: "Dashboard", href: "/", icon: <SquaresFour size={16} weight="regular" /> },
 ];
 
-export function TopNav({ active }: { active: TopNavKey }) {
+export function TopNav({
+  active,
+  hideAddProperty = false,
+  hideAddRequirement = false,
+}: {
+  active: TopNavKey;
+  hideAddProperty?: boolean;
+  hideAddRequirement?: boolean;
+}) {
   return (
     <header className="flex h-[72px] w-full items-center justify-between border-b border-[#eceff7] bg-white px-6">
       <div className="flex items-center gap-8">
@@ -72,14 +80,18 @@ export function TopNav({ active }: { active: TopNavKey }) {
       </div>
 
       <div className="flex items-center gap-3">
-        <button className="flex items-center gap-1.5 rounded-lg bg-[#2c39d6] px-3.5 py-2 text-[13px] font-semibold text-white shadow-sm transition hover:opacity-95">
-          <Plus size={14} weight="bold" />
-          Add Property
-        </button>
-        <button className="flex items-center gap-1.5 rounded-lg bg-[#2c39d6] px-3.5 py-2 text-[13px] font-semibold text-white shadow-sm transition hover:opacity-95">
-          <Plus size={14} weight="bold" />
-          Add Requirement
-        </button>
+        {!hideAddProperty && (
+          <button className="flex items-center gap-1.5 rounded-lg bg-[#2c39d6] px-3.5 py-2 text-[13px] font-semibold text-white shadow-sm transition hover:opacity-95">
+            <Plus size={14} weight="bold" />
+            Add Property
+          </button>
+        )}
+        {!hideAddRequirement && (
+          <button className="flex items-center gap-1.5 rounded-lg bg-[#2c39d6] px-3.5 py-2 text-[13px] font-semibold text-white shadow-sm transition hover:opacity-95">
+            <Plus size={14} weight="bold" />
+            Add Requirement
+          </button>
+        )}
         <button className="grid h-9 w-9 place-items-center rounded-full text-[#0b1856] transition hover:bg-[#f3f5ff]">
           <BellSimple size={20} weight="regular" />
         </button>

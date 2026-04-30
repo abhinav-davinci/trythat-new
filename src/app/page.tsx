@@ -535,6 +535,7 @@ function MyActivityCard() {
           icon={<HouseLine size={20} weight="duotone" />}
           value="25"
           label="My Listings"
+          href="/my-properties"
         />
         <ActivityTile
           icon={<BookmarkSimple size={20} weight="duotone" />}
