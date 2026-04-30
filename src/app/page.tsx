@@ -851,6 +851,7 @@ function QuickActionsCard() {
         <QuickAction
           icon={<Calculator size={18} weight="regular" />}
           label="Calculator"
+          href="https://trythat.ai/info/tools/calculators/emi"
         />
       </div>
     </div>
