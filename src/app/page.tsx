@@ -606,6 +606,7 @@ function ListPropertyCard() {
           icon={<PencilSimpleLine size={18} weight="regular" />}
           title="Create Listing Manually"
           subtitle="Fill details manually through form"
+          href="https://trythat.ai/listings/add-property"
         />
         <ListOption
           icon={<PhoneCall size={18} weight="regular" />}
@@ -621,13 +622,41 @@ function ListOption({
   icon,
   title,
   subtitle,
+  href,
 }: {
   icon: React.ReactNode;
   title: string;
   subtitle: string;
+  href?: string;
 }) {
+  const cls =
+    "group relative flex w-full items-start gap-2 rounded-xl border border-[#eceff7] bg-[#fafbff] px-2.5 py-2.5 pr-5 text-left transition hover:border-[#dfe3f3] hover:bg-white";
+
+  if (href) {
+    return (
+      <a href={href} className={cls}>
+        <span className="mt-0.5 grid h-7 w-7 flex-shrink-0 place-items-center rounded-md bg-white text-[#2c39d6] ring-1 ring-[#eceff7]">
+          {icon}
+        </span>
+        <div className="min-w-0 flex-1">
+          <div className="text-[12.5px] font-semibold leading-tight text-[#0b1856]">
+            {title}
+          </div>
+          <div className="mt-1 text-[10.5px] leading-tight text-[#6c7693]">
+            {subtitle}
+          </div>
+        </div>
+        <CaretRight
+          size={12}
+          weight="bold"
+          className="absolute right-2 top-3 text-[#9aa3c0]"
+        />
+      </a>
+    );
+  }
+
   return (
-    <button className="group relative flex w-full items-start gap-2 rounded-xl border border-[#eceff7] bg-[#fafbff] px-2.5 py-2.5 pr-5 text-left transition hover:border-[#dfe3f3] hover:bg-white">
+    <button type="button" className={cls}>
       <span className="mt-0.5 grid h-7 w-7 flex-shrink-0 place-items-center rounded-md bg-white text-[#2c39d6] ring-1 ring-[#eceff7]">
         {icon}
       </span>
@@ -817,6 +846,7 @@ function QuickActionsCard() {
         <QuickAction
           icon={<MagnifyingGlass size={18} weight="regular" />}
           label="Explore Properties"
+          href="https://trythat.ai/listings"
         />
         <QuickAction
           icon={<Calculator size={18} weight="regular" />}
@@ -830,12 +860,33 @@ function QuickActionsCard() {
 function QuickAction({
   icon,
   label,
+  href,
 }: {
   icon: React.ReactNode;
   label: string;
+  href?: string;
 }) {
+  const cls =
+    "flex items-center justify-between rounded-xl border border-[#eceff7] bg-[#fafbff] px-3 py-3";
+
+  if (href) {
+    return (
+      <a href={href} className={cls}>
+        <div className="flex items-center gap-2.5">
+          <span className="grid h-9 w-9 place-items-center rounded-lg bg-white text-[#2c39d6] ring-1 ring-[#eceff7]">
+            {icon}
+          </span>
+          <span className="text-[13.5px] font-semibold text-[#0b1856]">
+            {label}
+          </span>
+        </div>
+        <CaretRight size={14} weight="bold" className="text-[#9aa3c0]" />
+      </a>
+    );
+  }
+
   return (
-    <button className="flex items-center justify-between rounded-xl border border-[#eceff7] bg-[#fafbff] px-3 py-3">
+    <button type="button" className={cls}>
       <div className="flex items-center gap-2.5">
         <span className="grid h-9 w-9 place-items-center rounded-lg bg-white text-[#2c39d6] ring-1 ring-[#eceff7]">
           {icon}
@@ -863,12 +914,18 @@ function RealtyBriefCard() {
             RealtyBrief
           </span>
         </div>
-        <button className="text-[12px] font-semibold text-[#2c39d6]">
+        <a
+          href="https://trythat.ai/realtybrief"
+          className="text-[12px] font-semibold text-[#2c39d6] hover:underline hover:underline-offset-4"
+        >
           View All
-        </button>
+        </a>
       </div>
 
-      <div className="mt-3 flex items-start gap-3">
+      <a
+        href="https://trythat.ai/realtybrief"
+        className="mt-3 flex items-start gap-3 rounded-xl p-1 transition hover:bg-[#f3f5ff]"
+      >
         <CoinPileArt />
         <div className="min-w-0 flex-1">
           <div className="text-[13.5px] font-bold leading-snug text-[#0b1856]">
@@ -881,11 +938,11 @@ function RealtyBriefCard() {
           <div className="mt-1.5 flex items-center gap-1 text-[10.5px] text-[#9aa3c0]">
             <Clock size={11} /> 28 Mar 2026
           </div>
-          <button className="mt-1.5 flex items-center gap-1 text-[11.5px] font-semibold text-[#2c39d6]">
+          <span className="mt-1.5 flex items-center gap-1 text-[11.5px] font-semibold text-[#2c39d6]">
             Read More <ArrowRight size={11} weight="bold" />
-          </button>
+          </span>
         </div>
-      </div>
+      </a>
 
       <div className="mt-3 flex items-center justify-center gap-1.5">
         <span className="h-1.5 w-5 rounded-full bg-[#2c39d6]" />

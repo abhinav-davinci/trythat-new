@@ -1,0 +1,229 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - complementary [ref=e3]:
+      - generic [ref=e4]:
+        - link "TryThat.ai" [ref=e5] [cursor=pointer]:
+          - /url: /
+          - img "TryThat.ai" [ref=e6]
+        - button [ref=e7]:
+          - img [ref=e8]
+      - button "New Chat" [ref=e11]:
+        - img [ref=e12]
+        - text: New Chat
+      - navigation [ref=e14]:
+        - button "AI Chat" [ref=e15]:
+          - img [ref=e17]
+          - generic [ref=e19]: AI Chat
+        - link "Dashboard" [ref=e20] [cursor=pointer]:
+          - /url: /
+          - img [ref=e22]
+          - generic [ref=e24]: Dashboard
+        - button "Message 2" [ref=e25]:
+          - img [ref=e27]
+          - generic [ref=e29]: Message
+          - generic [ref=e30]: "2"
+      - generic [ref=e31]: Recent Chats
+      - generic [ref=e32]:
+        - button "2BHK in Baner" [ref=e33]
+        - button "Ready-to-move flats Kharadi" [ref=e34]
+        - button "5-year price trend Hinjewadi" [ref=e35]
+        - button "Compare Wakad vs Baner" [ref=e36]
+        - button "Investment under ₹1 Cr" [ref=e37]
+      - generic [ref=e38]:
+        - img "Sayali" [ref=e39]
+        - generic [ref=e40]:
+          - generic [ref=e41]: Sayali R.
+          - generic [ref=e42]: Personal · Pune
+        - button [ref=e43]:
+          - img [ref=e44]
+    - generic [ref=e46]:
+      - banner [ref=e47]:
+        - generic [ref=e48]:
+          - img [ref=e50]
+          - generic [ref=e52]:
+            - generic [ref=e53]:
+              - text: Pune City
+              - button "Change" [ref=e54]
+            - generic [ref=e55]: Hinjewadi, Pune, Maharashtra, India..
+        - generic [ref=e56]:
+          - button "Download App" [ref=e57]:
+            - img [ref=e58]
+            - text: Download App
+          - button "14" [ref=e60]:
+            - img [ref=e61]
+            - generic [ref=e63]: "14"
+          - img "Profile" [ref=e64]
+      - generic [ref=e67]:
+        - generic [ref=e69]:
+          - generic [ref=e70]: 2BHK in Baner
+          - img "You" [ref=e71]
+        - generic [ref=e72]:
+          - img [ref=e74]
+          - generic [ref=e76]:
+            - generic [ref=e77]:
+              - generic [ref=e78]: ALON
+              - generic [ref=e79]: ·
+              - generic [ref=e80]: AI Property Advisor
+              - generic [ref=e81]:
+                - img [ref=e82]
+                - text: RERA verified
+            - generic [ref=e84]:
+              - paragraph [ref=e85]: I found 3 strong matches for “2BHK in Baner”. I've ranked them on price-per-sq.ft, RERA verification, and amenities — all owner-listed, no broker fees.
+              - generic [ref=e86]:
+                - generic [ref=e88]:
+                  - generic [ref=e89]:
+                    - img "Spacious 2 BHK in Mont Vert Seville, Baner" [ref=e90]
+                    - generic [ref=e91]:
+                      - img [ref=e92]
+                      - text: RERA · P52100012345
+                    - generic [ref=e94]:
+                      - img [ref=e95]
+                      - text: "4.6"
+                  - generic [ref=e97]:
+                    - generic [ref=e98]:
+                      - generic [ref=e99]:
+                        - generic [ref=e100]: Spacious 2 BHK in Mont Vert Seville, Baner
+                        - generic [ref=e101]:
+                          - img [ref=e102]
+                          - text: Baner, Pune · Posted 3 days ago
+                      - generic [ref=e104]:
+                        - generic [ref=e105]: ₹89 Lakh
+                        - generic [ref=e106]: ₹9,200 / sq.ft
+                    - generic [ref=e107]:
+                      - generic [ref=e108]:
+                        - img [ref=e110]
+                        - text: 2 BHK
+                      - generic [ref=e112]:
+                        - img [ref=e114]
+                        - text: 2 Bath
+                      - generic [ref=e116]:
+                        - img [ref=e118]
+                        - text: 968 sq.ft
+                      - generic [ref=e120]: Semi-Furnished
+                      - generic [ref=e121]: Ready to Move
+                    - generic [ref=e122]:
+                      - generic [ref=e123]: Gym
+                      - generic [ref=e124]: Pool
+                      - generic [ref=e125]: 24×7 Security
+                      - generic [ref=e126]: Power Backup
+                    - generic [ref=e127]:
+                      - generic [ref=e128]:
+                        - generic [ref=e129]: RS
+                        - generic [ref=e130]:
+                          - generic [ref=e131]: Rajesh Sharma
+                          - generic [ref=e132]: Owner · No brokerage
+                      - button "Instant Connect" [ref=e134]:
+                        - img [ref=e135]
+                        - text: Instant Connect
+                - generic [ref=e138]:
+                  - generic [ref=e139]:
+                    - img "Premium 2 BHK with Hill View, Baner-Mahalunge" [ref=e140]
+                    - generic [ref=e141]:
+                      - img [ref=e142]
+                      - text: RERA · P52100098217
+                    - generic [ref=e144]:
+                      - img [ref=e145]
+                      - text: "4.8"
+                  - generic [ref=e147]:
+                    - generic [ref=e148]:
+                      - generic [ref=e149]:
+                        - generic [ref=e150]: Premium 2 BHK with Hill View, Baner-Mahalunge
+                        - generic [ref=e151]:
+                          - img [ref=e152]
+                          - text: Baner-Mahalunge, Pune · Posted 1 week ago
+                      - generic [ref=e154]:
+                        - generic [ref=e155]: ₹1.18 Cr
+                        - generic [ref=e156]: ₹10,500 / sq.ft
+                    - generic [ref=e157]:
+                      - generic [ref=e158]:
+                        - img [ref=e160]
+                        - text: 2 BHK
+                      - generic [ref=e162]:
+                        - img [ref=e164]
+                        - text: 2 Bath
+                      - generic [ref=e166]:
+                        - img [ref=e168]
+                        - text: 1,124 sq.ft
+                      - generic [ref=e170]: Fully Furnished
+                      - generic [ref=e171]: Possession Mar 2027
+                    - generic [ref=e172]:
+                      - generic [ref=e173]: Clubhouse
+                      - generic [ref=e174]: Garden
+                      - generic [ref=e175]: EV Charging
+                      - generic [ref=e176]: Concierge
+                    - generic [ref=e177]:
+                      - generic [ref=e178]:
+                        - generic [ref=e179]: PM
+                        - generic [ref=e180]:
+                          - generic [ref=e181]: Priya Mehta
+                          - generic [ref=e182]: Lister · No brokerage
+                      - button "Instant Connect" [ref=e184]:
+                        - img [ref=e185]
+                        - text: Instant Connect
+                - generic [ref=e188]:
+                  - generic [ref=e189]:
+                    - img "Bright 2 BHK Apartment near Balewadi High Street" [ref=e190]
+                    - generic [ref=e191]:
+                      - img [ref=e192]
+                      - text: RERA · P52100073921
+                    - generic [ref=e194]:
+                      - img [ref=e195]
+                      - text: "4.4"
+                  - generic [ref=e197]:
+                    - generic [ref=e198]:
+                      - generic [ref=e199]:
+                        - generic [ref=e200]: Bright 2 BHK Apartment near Balewadi High Street
+                        - generic [ref=e201]:
+                          - img [ref=e202]
+                          - text: Balewadi, Baner · Posted 5 days ago
+                      - generic [ref=e204]:
+                        - generic [ref=e205]: ₹76 Lakh
+                        - generic [ref=e206]: ₹8,400 / sq.ft
+                    - generic [ref=e207]:
+                      - generic [ref=e208]:
+                        - img [ref=e210]
+                        - text: 2 BHK
+                      - generic [ref=e212]:
+                        - img [ref=e214]
+                        - text: 2 Bath
+                      - generic [ref=e216]:
+                        - img [ref=e218]
+                        - text: 905 sq.ft
+                      - generic [ref=e220]: Unfurnished
+                      - generic [ref=e221]: Ready to Move
+                    - generic [ref=e222]:
+                      - generic [ref=e223]: Lift
+                      - generic [ref=e224]: Parking
+                      - generic [ref=e225]: Visitor Parking
+                      - generic [ref=e226]: Park
+                    - generic [ref=e227]:
+                      - generic [ref=e228]:
+                        - generic [ref=e229]: KD
+                        - generic [ref=e230]:
+                          - generic [ref=e231]: Karan Desai
+                          - generic [ref=e232]: Owner · No brokerage
+                      - button "Instant Connect" [ref=e234]:
+                        - img [ref=e235]
+                        - text: Instant Connect
+              - paragraph [ref=e237]: Tap Instant Connect on any listing to talk to the owner directly.
+              - generic [ref=e238]:
+                - button "Show only ready-to-move" [ref=e239]
+                - button "Sort by ₹/sq.ft" [ref=e240]
+                - button "Compare on rental yield" [ref=e241]
+                - button "Filter under ₹1 Cr" [ref=e242]
+      - generic [ref=e244]:
+        - generic [ref=e245]:
+          - button "Attach" [ref=e246]:
+            - img [ref=e247]
+          - button "Image" [ref=e249]:
+            - img [ref=e250]
+          - textbox "Ask anything — listings, legal, RERA, price trends…" [ref=e252]
+          - button "Voice" [ref=e253]:
+            - img [ref=e254]
+          - button "Send" [disabled] [ref=e256]:
+            - img [ref=e257]
+            - text: Send
+        - paragraph [ref=e259]: ALON can make mistakes. Cross-check listings on RERA before transacting.
+  - button "Open Next.js Dev Tools" [ref=e265] [cursor=pointer]:
+    - img [ref=e266]
+  - alert [ref=e269]

@@ -1,0 +1,225 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - complementary [ref=e3]:
+      - generic [ref=e4]:
+        - link "TryThat.ai" [ref=e5] [cursor=pointer]:
+          - /url: /
+          - img "TryThat.ai" [ref=e6]
+        - button [ref=e7]:
+          - img [ref=e8]
+      - link "New Chat" [ref=e11] [cursor=pointer]:
+        - /url: /chat
+        - img [ref=e12]
+        - text: New Chat
+      - navigation [ref=e14]:
+        - link "AI Chat" [ref=e15] [cursor=pointer]:
+          - /url: /chat
+          - img [ref=e17]
+          - generic [ref=e19]: AI Chat
+        - link "Dashboard" [ref=e20] [cursor=pointer]:
+          - /url: /
+          - img [ref=e22]
+          - generic [ref=e24]: Dashboard
+        - link "Message 2" [ref=e25] [cursor=pointer]:
+          - /url: /messages
+          - img [ref=e27]
+          - generic [ref=e29]: Message
+          - generic [ref=e30]: "2"
+      - generic [ref=e31]: Recent Chats
+      - generic [ref=e32]:
+        - link "2BHK in Baner" [ref=e33] [cursor=pointer]:
+          - /url: /chat?q=2BHK%20in%20Baner
+        - link "Ready-to-move flats Kharadi" [ref=e34] [cursor=pointer]:
+          - /url: /chat?q=Ready-to-move%20flats%20Kharadi
+        - link "5-year price trend Hinjewadi" [ref=e35] [cursor=pointer]:
+          - /url: /chat?q=5-year%20price%20trend%20Hinjewadi
+        - link "Compare Wakad vs Baner" [ref=e36] [cursor=pointer]:
+          - /url: /chat?q=Compare%20Wakad%20vs%20Baner
+        - link "Investment under ₹1 Cr" [ref=e37] [cursor=pointer]:
+          - /url: /chat?q=Investment%20under%20%E2%82%B91%20Cr
+      - generic [ref=e38]:
+        - img "Sayali" [ref=e39]
+        - generic [ref=e40]:
+          - generic [ref=e41]: Sayali R.
+          - generic [ref=e42]: Personal · Pune
+        - button [ref=e43]:
+          - img [ref=e44]
+    - generic [ref=e46]:
+      - banner [ref=e47]:
+        - generic [ref=e48]:
+          - img [ref=e50]
+          - generic [ref=e52]:
+            - generic [ref=e53]:
+              - text: Pune City
+              - button "Change" [ref=e54]
+            - generic [ref=e55]: Hinjewadi, Pune, Maharashtra, India..
+        - generic [ref=e56]:
+          - button "Download App" [ref=e57]:
+            - img [ref=e58]
+            - text: Download App
+          - button "14" [ref=e60]:
+            - img [ref=e61]
+            - generic [ref=e63]: "14"
+          - img "Profile" [ref=e64]
+      - generic [ref=e65]:
+        - complementary [ref=e66]:
+          - generic [ref=e67]:
+            - generic [ref=e68]:
+              - generic [ref=e69]:
+                - heading "Messages" [level=1] [ref=e70]
+                - paragraph [ref=e71]: Direct chats with property owners & listers
+              - button "Filter" [ref=e72]:
+                - img [ref=e73]
+            - generic [ref=e75]:
+              - img [ref=e76]
+              - textbox [ref=e78]:
+                - /placeholder: Search by name, property, or area
+            - generic [ref=e79]:
+              - button "All 5" [ref=e80]:
+                - text: All
+                - generic [ref=e81]: "5"
+              - button "Unread 1" [ref=e82]:
+                - text: Unread
+                - generic [ref=e83]: "1"
+          - list [ref=e85]:
+            - listitem [ref=e86]:
+              - button "RS Rajesh Sharma 2 min Owner 2 BHK · Baner, Pune Also — is parking a must-have? The unit comes with one covered slot, second one is on a waitlist." [ref=e87]:
+                - generic [ref=e89]: RS
+                - generic [ref=e92]:
+                  - generic [ref=e93]:
+                    - generic [ref=e94]: Rajesh Sharma
+                    - img [ref=e95]
+                    - generic [ref=e97]: 2 min
+                  - generic [ref=e98]:
+                    - generic [ref=e99]: Owner
+                    - generic [ref=e100]: 2 BHK · Baner, Pune
+                  - generic [ref=e104]: Also — is parking a must-have? The unit comes with one covered slot, second one is on a waitlist.
+            - listitem [ref=e105]:
+              - button "PM Priya Mehta 1h Lister 2 BHK · Baner-Mahalunge Brochure attached. Let me know your thoughts." [ref=e106]:
+                - generic [ref=e108]: PM
+                - generic [ref=e109]:
+                  - generic [ref=e110]:
+                    - generic [ref=e111]: Priya Mehta
+                    - img [ref=e112]
+                    - generic [ref=e114]: 1h
+                  - generic [ref=e115]:
+                    - generic [ref=e116]: Lister
+                    - generic [ref=e117]: 2 BHK · Baner-Mahalunge
+                  - generic [ref=e121]: Brochure attached. Let me know your thoughts.
+            - listitem [ref=e122]:
+              - button "KD Karan Desai 3h Owner 2 BHK · Balewadi, Baner Yes, the unit is still available. Want to schedule a viewing? 1" [ref=e123]:
+                - generic [ref=e125]: KD
+                - generic [ref=e128]:
+                  - generic [ref=e129]:
+                    - generic [ref=e130]: Karan Desai
+                    - img [ref=e131]
+                    - generic [ref=e133]: 3h
+                  - generic [ref=e134]:
+                    - generic [ref=e135]: Owner
+                    - generic [ref=e136]: 2 BHK · Balewadi, Baner
+                  - generic [ref=e137]:
+                    - generic [ref=e140]: Yes, the unit is still available. Want to schedule a viewing?
+                    - generic [ref=e141]: "1"
+            - listitem [ref=e142]:
+              - button "AI Anjali Iyer Yesterday Lister 3 BHK · Kharadi, Pune I've shared the floor plan. Pricing is firm." [ref=e143]:
+                - generic [ref=e145]: AI
+                - generic [ref=e146]:
+                  - generic [ref=e147]:
+                    - generic [ref=e148]: Anjali Iyer
+                    - img [ref=e149]
+                    - generic [ref=e151]: Yesterday
+                  - generic [ref=e152]:
+                    - generic [ref=e153]: Lister
+                    - generic [ref=e154]: 3 BHK · Kharadi, Pune
+                  - generic [ref=e158]: I've shared the floor plan. Pricing is firm.
+            - listitem [ref=e159]:
+              - button "VJ Vikram Joshi 2d Owner 1 RK · Hinjewadi, Pune Likewise — reach out if you have any questions about the unit." [ref=e160]:
+                - generic [ref=e162]: VJ
+                - generic [ref=e163]:
+                  - generic [ref=e164]:
+                    - generic [ref=e165]: Vikram Joshi
+                    - img [ref=e166]
+                    - generic [ref=e168]: 2d
+                  - generic [ref=e169]:
+                    - generic [ref=e170]: Owner
+                    - generic [ref=e171]: 1 RK · Hinjewadi, Pune
+                  - generic [ref=e175]: Likewise — reach out if you have any questions about the unit.
+        - generic [ref=e176]:
+          - generic [ref=e177]:
+            - generic [ref=e178]:
+              - generic [ref=e180]: RS
+              - generic [ref=e183]:
+                - generic [ref=e184]:
+                  - text: Rajesh Sharma
+                  - img [ref=e185]
+                  - generic [ref=e187]:
+                    - img [ref=e188]
+                    - text: Verified Owner
+                - generic [ref=e190]: Online · usually replies in ~10 min
+            - generic [ref=e191]:
+              - link "Call" [ref=e192] [cursor=pointer]:
+                - /url: tel:+919876543210
+                - img [ref=e193]
+              - button "Video call" [ref=e195]:
+                - img [ref=e196]
+              - button "Pin" [ref=e198]:
+                - img [ref=e199]
+              - button "Archive" [ref=e201]:
+                - img [ref=e202]
+              - button "More" [ref=e204]:
+                - img [ref=e205]
+          - generic [ref=e207]:
+            - img "Spacious 2 BHK in Mont Vert Seville" [ref=e209]
+            - generic [ref=e210]:
+              - generic [ref=e211]: Spacious 2 BHK in Mont Vert Seville
+              - generic [ref=e212]:
+                - img [ref=e213]
+                - text: Baner, Pune · 2 BHK · 968 sq.ft
+            - generic [ref=e215]:
+              - generic [ref=e216]: ₹89 Lakh
+              - button "View listing" [ref=e217]:
+                - text: View listing
+                - img [ref=e218]
+          - generic [ref=e221]:
+            - generic [ref=e223]: Monday, Apr 27
+            - generic [ref=e224]:
+              - generic [ref=e225]: RS
+              - generic [ref=e226]:
+                - generic [ref=e227]: Hi! Thanks for the interest in Mont Vert Seville. Happy to share more — when would you like to visit?
+                - generic [ref=e228]: Mon 10:42 AM
+            - generic [ref=e229]:
+              - generic [ref=e230]: Hi Rajesh! Could we plan a visit this weekend? I'm flexible on Sat or Sun morning.
+              - generic [ref=e231]:
+                - text: Mon 11:05 AM
+                - img [ref=e232]
+            - generic [ref=e235]: Today
+            - generic [ref=e236]:
+              - generic [ref=e237]: RS
+              - generic [ref=e238]:
+                - generic [ref=e239]: Perfect. Saturday at 11 AM works for me. I'll share the gate-pass details a day in advance.
+                - generic [ref=e240]: Today 9:14 AM
+            - generic [ref=e241]:
+              - generic [ref=e242]: RS
+              - generic [ref=e243]:
+                - generic [ref=e244]: Also — is parking a must-have? The unit comes with one covered slot, second one is on a waitlist.
+                - generic [ref=e245]: Today 9:15 AM
+          - generic [ref=e246]:
+            - generic [ref=e247]:
+              - button "Emoji" [ref=e248]:
+                - img [ref=e249]
+              - button "Attach" [ref=e251]:
+                - img [ref=e252]
+              - button "Image" [ref=e254]:
+                - img [ref=e255]
+              - textbox "Message Rajesh…" [ref=e257]
+              - button "Voice" [ref=e258]:
+                - img [ref=e259]
+              - button "Send" [disabled] [ref=e261]:
+                - img [ref=e262]
+                - text: Send
+            - generic [ref=e264]:
+              - img [ref=e265]
+              - text: End-to-end private — only you and Rajesh can see this conversation.
+  - button "Open Next.js Dev Tools" [ref=e272] [cursor=pointer]:
+    - img [ref=e273]
+  - alert [ref=e276]

@@ -1,0 +1,277 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - banner [ref=e3]:
+      - generic [ref=e4]:
+        - img "TryThat.ai — Real Estate SuperApp" [ref=e5]
+        - generic [ref=e6]:
+          - img [ref=e8]
+          - generic [ref=e10]:
+            - generic [ref=e11]:
+              - generic [ref=e12]: Pune City
+              - button "Change" [ref=e13]
+            - generic [ref=e14]: Hinjewadi, Pune, Maharashtra, India..
+      - navigation [ref=e15]:
+        - generic [ref=e16]:
+          - img [ref=e17]
+          - text: Dashboard
+        - generic [ref=e20]:
+          - img [ref=e21]
+          - text: My Space
+      - generic [ref=e23]:
+        - button "Download App" [ref=e24]:
+          - img [ref=e25]
+          - text: Download App
+        - button "14" [ref=e27]:
+          - img [ref=e28]
+          - generic [ref=e30]: "14"
+        - img "Profile" [ref=e32]
+    - generic [ref=e33]:
+      - img [ref=e34]
+      - generic [ref=e65]:
+        - generic [ref=e66]:
+          - generic [ref=e67]:
+            - heading "Hi Sayali, Welcome to TryThat!" [level=1] [ref=e68]
+            - paragraph [ref=e69]: Your AI Property Advisoris ready to help you decide smarter.
+          - generic [ref=e70]:
+            - generic [ref=e71]:
+              - img [ref=e73]
+              - generic [ref=e75]: Pune Property Insights
+            - generic [ref=e76]:
+              - generic [ref=e77]:
+                - generic [ref=e78]: ₹7,200 /sq.ft
+                - generic [ref=e79]: Avg Price in Pune
+              - generic [ref=e80]:
+                - generic [ref=e82]:
+                  - text: Wakad
+                  - generic [ref=e83]:
+                    - img [ref=e84]
+                    - text: 12%
+                - generic [ref=e86]: Top Growing Area
+              - generic [ref=e87]:
+                - generic [ref=e88]: High for 2BHK
+                - generic [ref=e89]: Demand in Pune
+              - generic [ref=e90]:
+                - generic [ref=e91]: 6.5% Avg
+                - generic [ref=e92]: Rental Yield
+        - generic [ref=e93]:
+          - img [ref=e95]
+          - textbox "Search properties, areas, builders..." [ref=e97]: T
+          - button "Ask AI" [ref=e98]:
+            - img [ref=e99]
+            - text: Ask AI
+    - main [ref=e101]:
+      - generic [ref=e102]:
+        - 'link "ALON is active ALON: Let''s Find What Fits You Find the right property and make better decisions with ALON Supports you at every stage—from exploring to decision-making Scanning 12L+ listings and verifying RERA data - just for you West Pune Apartment 2 BHK, 3 BHK ₹80 Lakh – ₹1.2 Cr Self use 12,847 Listings scanned 342 Matches Found 5 Shortlisted" [ref=e103] [cursor=pointer]':
+          - /url: https://alon-dev.altrrtech.com/
+          - generic [ref=e104]:
+            - img [ref=e106]
+            - generic [ref=e108]: ALON is active
+          - generic [ref=e110]:
+            - 'heading "ALON: Let''s Find What Fits You" [level=3] [ref=e111]'
+            - list [ref=e112]:
+              - listitem [ref=e113]:
+                - img [ref=e114]
+                - text: Find the right property and make better decisions with ALON
+              - listitem [ref=e116]:
+                - img [ref=e117]
+                - text: Supports you at every stage—from exploring to decision-making
+          - generic [ref=e119]:
+            - paragraph [ref=e120]: Scanning 12L+ listings and verifying RERA data - just for you
+            - generic [ref=e121]:
+              - generic [ref=e122]: West Pune
+              - generic [ref=e123]: Apartment
+              - generic [ref=e124]: 2 BHK, 3 BHK
+              - generic [ref=e125]: ₹80 Lakh – ₹1.2 Cr
+              - generic [ref=e126]: Self use
+            - generic [ref=e127]:
+              - generic [ref=e128]:
+                - img [ref=e130]
+                - generic [ref=e133]: 12,847
+                - generic [ref=e134]: Listings scanned
+              - generic [ref=e135]:
+                - img [ref=e137]
+                - generic [ref=e140]: "342"
+                - generic [ref=e141]: Matches Found
+              - generic [ref=e142]:
+                - img [ref=e144]
+                - generic [ref=e147]: "5"
+                - generic [ref=e148]: Shortlisted
+        - generic [ref=e149]:
+          - generic [ref=e150]:
+            - generic [ref=e151]:
+              - img [ref=e153]
+              - generic [ref=e157]: Data Terminal
+            - generic [ref=e158]: Live Now
+          - paragraph [ref=e160]: All-in-one real estate dashboard with RERA & IGR insights.
+          - generic [ref=e161]:
+            - generic [ref=e163]:
+              - img [ref=e165]
+              - generic [ref=e168]:
+                - generic [ref=e169]: 450K
+                - generic [ref=e170]: Projects
+            - generic [ref=e172]:
+              - img [ref=e174]
+              - generic [ref=e177]:
+                - generic [ref=e178]: 1.6M+
+                - generic [ref=e179]: Listings
+            - generic [ref=e181]:
+              - img [ref=e183]
+              - generic [ref=e186]:
+                - generic [ref=e187]: 1.6M+
+                - generic [ref=e188]: Transactions
+          - generic [ref=e190]:
+            - generic [ref=e191]: 65%
+            - generic [ref=e192]: Transaction Growth
+            - generic [ref=e193]: (Last 3 Months)
+          - button "It's Live - Visit Data Terminal" [ref=e204]:
+            - text: It's Live - Visit Data Terminal
+            - img [ref=e205]
+      - generic [ref=e207]:
+        - generic [ref=e208]:
+          - heading "My Activity" [level=3] [ref=e209]
+          - generic [ref=e210]:
+            - generic [ref=e211]:
+              - img [ref=e213]
+              - generic [ref=e216]: "25"
+              - generic [ref=e217]: My Listings
+            - generic [ref=e218]:
+              - img [ref=e220]
+              - generic [ref=e223]: "30"
+              - generic [ref=e224]: Saved Properties
+            - generic [ref=e225]:
+              - img [ref=e227]
+              - generic [ref=e230]: "42"
+              - generic [ref=e231]: Unlocked
+            - generic [ref=e232]:
+              - img [ref=e234]
+              - generic [ref=e237]: "245"
+              - generic [ref=e238]: My Data
+        - generic [ref=e239]:
+          - generic [ref=e240]:
+            - generic [ref=e241]:
+              - img [ref=e243]
+              - generic [ref=e245]:
+                - heading "List Your Property" [level=3] [ref=e246]
+                - paragraph [ref=e247]: List your property in 60 sec.
+            - generic [ref=e248]: Just Speak & List
+          - generic [ref=e249]:
+            - button "Voice Note Describe property with voice" [ref=e250]:
+              - img [ref=e252]
+              - generic [ref=e254]:
+                - generic [ref=e255]:
+                  - generic [ref=e256]: Voice Note
+                  - img [ref=e257]
+                - generic [ref=e259]: Describe property with voice
+            - button "Create Listing Manually Fill details manually through form" [ref=e260]:
+              - img [ref=e262]
+              - generic [ref=e264]:
+                - generic [ref=e265]:
+                  - generic [ref=e266]: Create Listing Manually
+                  - img [ref=e267]
+                - generic [ref=e269]: Fill details manually through form
+            - button "Call & List Quickly list with expert help" [ref=e270]:
+              - img [ref=e272]
+              - generic [ref=e274]:
+                - generic [ref=e275]:
+                  - generic [ref=e276]: Call & List
+                  - img [ref=e277]
+                - generic [ref=e279]: Quickly list with expert help
+        - generic [ref=e280]:
+          - heading "Request Any Data" [level=3] [ref=e281]
+          - paragraph [ref=e282]: Get documents, listings, transaction data & insights—all in one place
+          - generic [ref=e283]:
+            - generic [ref=e284]:
+              - generic [ref=e285]:
+                - generic [ref=e286]:
+                  - img [ref=e288]
+                  - generic [ref=e290]:
+                    - generic [ref=e291]: Agreement / Deed
+                    - generic [ref=e292]: Get property registration documents
+                - img [ref=e293]
+              - generic [ref=e295]:
+                - generic [ref=e296]:
+                  - generic [ref=e297]:
+                    - text: "Total Requests:"
+                    - generic [ref=e299]: "24"
+                  - generic [ref=e300]:
+                    - text: "In Progress:"
+                    - generic [ref=e302]: "3"
+                  - generic [ref=e303]:
+                    - text: "Ready to View:"
+                    - generic [ref=e305]: "1"
+                - button "View" [ref=e306]:
+                  - img [ref=e307]
+                  - text: View
+            - generic [ref=e309]:
+              - generic [ref=e310]:
+                - generic [ref=e311]:
+                  - img [ref=e313]
+                  - generic [ref=e315]:
+                    - generic [ref=e316]: Transaction Data
+                    - generic [ref=e317]: Request recent property transaction details
+                - img [ref=e318]
+              - generic [ref=e321]:
+                - generic [ref=e322]:
+                  - text: "Total Requests:"
+                  - generic [ref=e324]: "24"
+                - generic [ref=e325]:
+                  - text: "In Progress:"
+                  - generic [ref=e327]: "3"
+            - generic [ref=e329]:
+              - generic [ref=e330]:
+                - img [ref=e332]
+                - generic [ref=e335]: Listing Data
+              - img [ref=e336]
+      - generic [ref=e338]:
+        - generic [ref=e340]:
+          - generic [ref=e341]:
+            - img [ref=e343]
+            - generic [ref=e345]:
+              - generic [ref=e346]: Upgrade to B2B
+              - paragraph [ref=e347]: Unlock premium insights, advanced analytics, and tools built for real estate professionals.
+          - button "Upgrade Now" [ref=e348]:
+            - text: Upgrade Now
+            - img [ref=e349]
+        - generic [ref=e351]:
+          - generic [ref=e352]:
+            - img [ref=e354]
+            - generic [ref=e356]:
+              - generic [ref=e357]: Subscribe and get updates
+              - paragraph [ref=e358]: Latest property insights and market updates
+          - button "Start Free Subscription" [ref=e359]:
+            - text: Start Free Subscription
+            - img [ref=e360]
+        - generic [ref=e362]:
+          - heading "Quick Actions" [level=3] [ref=e363]
+          - generic [ref=e364]:
+            - button "Explore Properties" [ref=e365]:
+              - generic [ref=e366]:
+                - img [ref=e368]
+                - generic [ref=e370]: Explore Properties
+              - img [ref=e371]
+            - button "Calculator" [ref=e373]:
+              - generic [ref=e374]:
+                - img [ref=e376]
+                - generic [ref=e378]: Calculator
+              - img [ref=e379]
+        - generic [ref=e381]:
+          - generic [ref=e382]:
+            - generic [ref=e383]:
+              - generic [ref=e384]: R
+              - generic [ref=e385]: RealtyBrief
+            - button "View All" [ref=e386]
+          - generic [ref=e387]:
+            - img [ref=e389]:
+              - generic [ref=e401]: ₹
+            - generic [ref=e402]:
+              - generic [ref=e403]: Property Registration Data Shows Upward Trend
+              - paragraph [ref=e404]: Increased transactions recorded in March as buyers rush before new rates.
+              - generic [ref=e405]:
+                - img [ref=e406]
+                - text: 28 Mar 2026
+              - button "Read More" [ref=e408]:
+                - text: Read More
+                - img [ref=e409]
+  - button "Open Next.js Dev Tools" [ref=e421] [cursor=pointer]:
+    - img [ref=e422]
+  - alert [ref=e425]
