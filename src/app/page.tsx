@@ -26,6 +26,7 @@ import {
   SquaresFour,
   Crown,
 } from "@phosphor-icons/react/dist/ssr";
+import { SubscribeCard } from "./_components/SubscribeCard";
 
 const DATA_TERMINAL_SSO_URL = `https://data-terminal.trythat.ai/sso-login?token=${process.env.NEXT_PUBLIC_DT_DEMO_TOKEN ?? ""}`;
 
@@ -848,32 +849,6 @@ function UpgradeCard() {
           Upgrade Now <ArrowRight size={12} weight="bold" />
         </button>
       </div>
-    </div>
-  );
-}
-
-/* ---------------------------- SUBSCRIBE ---------------------------- */
-
-function SubscribeCard() {
-  return (
-    <div className="flex items-center justify-between gap-3 rounded-2xl border border-[#eceff7] bg-white px-4 py-3.5">
-      <div className="flex min-w-0 items-center gap-3">
-        <span className="grid h-10 w-10 flex-shrink-0 place-items-center rounded-xl bg-gradient-to-br from-[#eef1ff] to-[#dde2f7] text-[#2c39d6]">
-          <BellSimple size={20} weight="fill" />
-        </span>
-        <div className="min-w-0">
-          <div className="text-[14.5px] font-bold leading-tight text-[#0b1856]">
-            Subscribe and get updates
-          </div>
-          <p className="mt-0.5 text-[11px] leading-snug text-[#6c7693]">
-            Latest property insights and market updates
-          </p>
-        </div>
-      </div>
-      <button className="flex flex-shrink-0 items-center gap-1.5 rounded-lg bg-gradient-to-br from-[#3a4af0] to-[#2c39d6] px-3 py-2 text-[12.5px] font-semibold text-white shadow-md">
-        Start Free Subscription
-        <ArrowRight size={12} weight="bold" />
-      </button>
     </div>
   );
 }
