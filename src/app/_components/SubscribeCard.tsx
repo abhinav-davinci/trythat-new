@@ -300,153 +300,139 @@ function SubscriptionSelectionModal({
   const canActivate = !!selectedLocalityId && !!selectedPropertyId;
 
   return (
-    <ModalShell onClose={onClose} align="top">
-      <div className="flex w-[786px] max-w-full flex-col gap-8 rounded-2xl bg-white p-6 shadow-[0_3.844px_8.648px_-2.883px_rgba(24,39,75,0.12),0_5.766px_20.18px_-1.922px_rgba(24,39,75,0.12)]">
+    <ModalShell onClose={onClose}>
+      <div className="flex max-h-[92vh] w-[720px] max-w-full flex-col rounded-2xl bg-white shadow-[0_3.844px_8.648px_-2.883px_rgba(24,39,75,0.12),0_5.766px_20.18px_-1.922px_rgba(24,39,75,0.12)]">
         {/* Header */}
-        <div className="flex flex-col gap-2">
-          <div className="flex flex-col items-stretch gap-6 border-b border-[#e2e8f0] pb-6">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-3">
-                <span className="grid size-[52px] flex-shrink-0 place-items-center rounded-[26px] bg-[#ebecff] text-[#3334de]">
-                  <BellRinging size={24} weight="bold" />
-                </span>
-                <div className="flex flex-col gap-1">
-                  <h2 className="text-[20px] font-extrabold leading-[26px] text-[#0e0e58]">
-                    Subscribe and Get Updates
-                  </h2>
-                  <p className="text-[14px] leading-5 text-[#475569]">
-                    Subscribe to 1 locality and 1 property on the free plan and
-                    get transaction updates
-                  </p>
-                </div>
+        <div className="flex flex-col gap-3 border-b border-[#e2e8f0] px-5 pb-4 pt-5">
+          <div className="flex items-start justify-between gap-3">
+            <div className="flex items-center gap-3">
+              <span className="grid size-11 flex-shrink-0 place-items-center rounded-[22px] bg-[#ebecff] text-[#3334de]">
+                <BellRinging size={20} weight="bold" />
+              </span>
+              <div className="flex flex-col">
+                <h2 className="text-[18px] font-extrabold leading-6 text-[#0e0e58]">
+                  Subscribe and Get Updates
+                </h2>
+                <p className="mt-0.5 text-[13px] leading-[18px] text-[#475569]">
+                  Subscribe to 1 locality and 1 property on the free plan and get transaction updates
+                </p>
               </div>
-              <button
-                onClick={onClose}
-                aria-label="Close"
-                className="grid size-11 place-items-center rounded-md text-[#64748b] transition hover:bg-[#f3f5ff]"
-              >
-                <X size={22} weight="bold" />
-              </button>
             </div>
-
-            {/* Tabs */}
-            <div className="flex w-full items-center rounded-lg bg-[#f8fafc] p-1">
-              <TabButton
-                label="Locality"
-                icon={<MapPin size={18} weight="bold" />}
-                active={tab === "locality"}
-                hasSelection={!!selectedLocalityId}
-                onClick={() => {
-                  setTab("locality");
-                  setQuery("");
-                }}
-              />
-              <TabButton
-                label="Property"
-                icon={<Buildings size={18} weight="bold" />}
-                active={tab === "property"}
-                hasSelection={!!selectedPropertyId}
-                onClick={() => {
-                  setTab("property");
-                  setQuery("");
-                }}
-              />
-            </div>
-
-            {/* Search */}
-            <label className="flex h-12 items-center gap-2 rounded-lg border border-[#c5c7ff] bg-white px-3 shadow-[0_0.961px_1.922px_-0.961px_rgba(24,39,75,0.12),0_1.922px_1.922px_-0.961px_rgba(24,39,75,0.08)] focus-within:border-[#6a6bff]">
-              <MagnifyingGlass size={18} weight="bold" className="text-[#94a3b8]" />
-              <input
-                type="text"
-                value={query}
-                onChange={(e) => setQuery(e.target.value)}
-                placeholder={
-                  tab === "locality"
-                    ? "Search locality..."
-                    : "Search property..."
-                }
-                className="flex-1 bg-transparent text-[16px] leading-6 text-[#0f172a] placeholder:text-[#94a3b8] outline-none"
-              />
-            </label>
+            <button
+              onClick={onClose}
+              aria-label="Close"
+              className="grid size-9 flex-shrink-0 place-items-center rounded-md text-[#64748b] transition hover:bg-[#f3f5ff]"
+            >
+              <X size={20} weight="bold" />
+            </button>
           </div>
 
-          <p className="text-[12px] leading-4 text-[#64748b]">
-            Personalise your feed by subscribing to a locality and building for
-            transaction updates
-          </p>
+          {/* Tabs */}
+          <div className="flex w-full items-center rounded-lg bg-[#f8fafc] p-1">
+            <TabButton
+              label="Locality"
+              icon={<MapPin size={16} weight="bold" />}
+              active={tab === "locality"}
+              hasSelection={!!selectedLocalityId}
+              onClick={() => {
+                setTab("locality");
+                setQuery("");
+              }}
+            />
+            <TabButton
+              label="Property"
+              icon={<Buildings size={16} weight="bold" />}
+              active={tab === "property"}
+              hasSelection={!!selectedPropertyId}
+              onClick={() => {
+                setTab("property");
+                setQuery("");
+              }}
+            />
+          </div>
+
+          {/* Search */}
+          <label className="flex h-10 items-center gap-2 rounded-lg border border-[#c5c7ff] bg-white px-3 shadow-[0_0.961px_1.922px_-0.961px_rgba(24,39,75,0.12),0_1.922px_1.922px_-0.961px_rgba(24,39,75,0.08)] focus-within:border-[#6a6bff]">
+            <MagnifyingGlass size={16} weight="bold" className="text-[#94a3b8]" />
+            <input
+              type="text"
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              placeholder={
+                tab === "locality" ? "Search locality..." : "Search property..."
+              }
+              className="flex-1 bg-transparent text-[14px] leading-5 text-[#0f172a] placeholder:text-[#94a3b8] outline-none"
+            />
+          </label>
         </div>
 
-        {/* Body */}
-        <div className="flex flex-col gap-3">
-          <h3 className="text-[16px] font-semibold leading-6 text-[#0e0e58]">
+        {/* Body (scrollable if it ever overflows) */}
+        <div className="flex min-h-0 flex-1 flex-col gap-3 overflow-y-auto px-5 py-4">
+          <p className="text-[12px] leading-4 text-[#64748b]">
+            Personalise your feed by subscribing to a locality and building for transaction updates
+          </p>
+
+          <h3 className="text-[14px] font-semibold leading-5 text-[#0e0e58]">
             Popular in Pune
           </h3>
 
-          {tab === "locality" ? (
-            <div className="grid grid-cols-3 gap-3">
-              {filteredLocalities.length === 0 ? (
-                <EmptyResults label="No localities match your search" />
-              ) : (
-                filteredLocalities.map((l) => (
-                  <SuggestionCard
-                    key={l.id}
-                    icon={<MapPin size={14} weight="bold" />}
-                    title={l.name}
-                    transactions={l.transactions}
-                    selected={l.id === selectedLocalityId}
-                    onClick={() =>
-                      onSelectLocality(l.id === selectedLocalityId ? null : l.id)
-                    }
-                  />
-                ))
-              )}
-            </div>
-          ) : (
-            <div className="grid grid-cols-3 gap-3">
-              {filteredProperties.length === 0 ? (
-                <EmptyResults label="No properties match your search" />
-              ) : (
-                filteredProperties.map((p) => (
-                  <SuggestionCard
-                    key={p.id}
-                    icon={<Buildings size={14} weight="bold" />}
-                    title={p.name}
-                    subtitle={p.area}
-                    transactions={p.transactions}
-                    selected={p.id === selectedPropertyId}
-                    onClick={() =>
-                      onSelectProperty(p.id === selectedPropertyId ? null : p.id)
-                    }
-                  />
-                ))
-              )}
-            </div>
-          )}
-        </div>
+          <div className="grid grid-cols-3 gap-2.5">
+            {tab === "locality"
+              ? filteredLocalities.length === 0
+                ? <EmptyResults label="No localities match your search" />
+                : filteredLocalities.map((l) => (
+                    <SuggestionCard
+                      key={l.id}
+                      icon={<MapPin size={12} weight="bold" />}
+                      title={l.name}
+                      transactions={l.transactions}
+                      selected={l.id === selectedLocalityId}
+                      onClick={() =>
+                        onSelectLocality(l.id === selectedLocalityId ? null : l.id)
+                      }
+                    />
+                  ))
+              : filteredProperties.length === 0
+                ? <EmptyResults label="No properties match your search" />
+                : filteredProperties.map((p) => (
+                    <SuggestionCard
+                      key={p.id}
+                      icon={<Buildings size={12} weight="bold" />}
+                      title={p.name}
+                      subtitle={p.area}
+                      transactions={p.transactions}
+                      selected={p.id === selectedPropertyId}
+                      onClick={() =>
+                        onSelectProperty(p.id === selectedPropertyId ? null : p.id)
+                      }
+                    />
+                  ))}
+          </div>
 
-        {/* What You'll Unlock */}
-        <div
-          className="flex flex-col gap-2 rounded-[14px] border border-[#ffd8a8] p-3"
-          style={{ background: "rgba(255,242,224,0.5)" }}
-        >
-          <h4 className="text-[12px] font-semibold leading-4 text-[#0f172a]">
-            What You&apos;ll Unlock
-          </h4>
-          <ul className="flex flex-col gap-1">
-            <UnlockItem text="Get recent transaction updates" />
-            <UnlockItem text="Receive rent & sale alerts" />
-            <UnlockItem
-              text="Free users can subscribe to 1 locality & 1 building"
-              tone="warning"
-            />
-          </ul>
+          {/* What You'll Unlock */}
+          <div
+            className="mt-1 flex flex-col gap-1.5 rounded-xl border border-[#ffd8a8] p-3"
+            style={{ background: "rgba(255,242,224,0.5)" }}
+          >
+            <h4 className="text-[12px] font-semibold leading-4 text-[#0f172a]">
+              What You&apos;ll Unlock
+            </h4>
+            <ul className="flex flex-col">
+              <UnlockItem text="Get recent transaction updates" />
+              <UnlockItem text="Receive rent & sale alerts" />
+              <UnlockItem
+                text="Free users can subscribe to 1 locality & 1 building"
+                tone="warning"
+              />
+            </ul>
+          </div>
         </div>
 
         {/* Footer */}
-        <div className="flex w-full items-center justify-end gap-6 border-t border-[#f1f5f9] pt-6">
+        <div className="flex w-full items-center justify-end gap-3 border-t border-[#f1f5f9] px-5 py-3">
           <button
             onClick={onClose}
-            className="flex h-12 flex-1 items-center justify-center rounded-lg border-[1.5px] border-[#e2e8f0] bg-white px-5 text-[16px] font-semibold leading-5 text-[#334155] transition hover:bg-[#f8fafc]"
+            className="flex h-10 flex-1 items-center justify-center rounded-lg border-[1.5px] border-[#e2e8f0] bg-white px-5 text-[14px] font-semibold leading-5 text-[#334155] transition hover:bg-[#f8fafc]"
           >
             Cancel
           </button>
@@ -455,11 +441,11 @@ function SubscriptionSelectionModal({
             disabled={!canActivate}
             className={
               canActivate
-                ? "flex h-12 flex-1 items-center justify-center gap-2 rounded-lg bg-[#3334de] px-5 text-[16px] font-semibold leading-5 text-white transition hover:bg-[#2729c7]"
-                : "flex h-12 flex-1 cursor-not-allowed items-center justify-center gap-2 rounded-lg bg-[#e2e8f0] px-5 text-[16px] font-semibold leading-5 text-[#94a3b8]"
+                ? "flex h-10 flex-1 items-center justify-center gap-2 rounded-lg bg-[#3334de] px-5 text-[14px] font-semibold leading-5 text-white transition hover:bg-[#2729c7]"
+                : "flex h-10 flex-1 cursor-not-allowed items-center justify-center gap-2 rounded-lg bg-[#e2e8f0] px-5 text-[14px] font-semibold leading-5 text-[#94a3b8]"
             }
           >
-            <ArrowRight size={18} weight="bold" />
+            <ArrowRight size={16} weight="bold" />
             Activate
           </button>
         </div>
@@ -486,8 +472,8 @@ function TabButton({
       onClick={onClick}
       className={
         active
-          ? "flex flex-1 items-center justify-center gap-3 rounded-lg border border-[#c5c7ff] bg-[#ebecff] px-3 py-4 text-[14px] font-semibold leading-5 text-[#0e0e58] transition"
-          : "flex flex-1 items-center justify-center gap-3 rounded-lg bg-white px-3 py-4 text-[14px] font-medium leading-5 text-[#94a3b8] transition hover:text-[#0e0e58]"
+          ? "flex flex-1 items-center justify-center gap-2 rounded-lg border border-[#c5c7ff] bg-[#ebecff] px-3 py-2.5 text-[13px] font-semibold leading-5 text-[#0e0e58] transition"
+          : "flex flex-1 items-center justify-center gap-2 rounded-lg bg-white px-3 py-2.5 text-[13px] font-medium leading-5 text-[#94a3b8] transition hover:text-[#0e0e58]"
       }
       style={{ letterSpacing: 0.28 }}
     >
@@ -526,39 +512,39 @@ function SuggestionCard({
       onClick={onClick}
       className={
         selected
-          ? "relative flex h-[72px] items-start gap-2 overflow-clip rounded-2xl border border-[#6a6bff] bg-[#ebecff] p-3 text-left shadow-[0_0_0_3px_rgba(106,107,255,0.15)] transition"
-          : "flex h-[72px] items-start gap-2 overflow-clip rounded-2xl bg-[#f8fafc] p-3 text-left transition hover:bg-[#eef0ff]"
+          ? "relative flex items-start gap-2 overflow-clip rounded-xl border border-[#6a6bff] bg-[#ebecff] p-2.5 text-left shadow-[0_0_0_3px_rgba(106,107,255,0.15)] transition"
+          : "relative flex items-start gap-2 overflow-clip rounded-xl border border-transparent bg-[#f8fafc] p-2.5 text-left transition hover:bg-[#eef0ff]"
       }
     >
       <span
         className={
           selected
-            ? "grid size-6 flex-shrink-0 place-items-center rounded-xl bg-[#6a6bff] text-white"
-            : "grid size-6 flex-shrink-0 place-items-center rounded-xl bg-[#f1f5f9] text-[#0e0e58]"
+            ? "mt-0.5 grid size-5 flex-shrink-0 place-items-center rounded-md bg-[#6a6bff] text-white"
+            : "mt-0.5 grid size-5 flex-shrink-0 place-items-center rounded-md bg-[#f1f5f9] text-[#0e0e58]"
         }
       >
         {icon}
       </span>
-      <div className="flex min-w-0 flex-col gap-1">
+      <div className="flex min-w-0 flex-col">
         <p
-          className="truncate text-[14px] font-medium leading-5 text-[#0f172a]"
-          style={{ letterSpacing: 0.28 }}
+          className="truncate text-[13px] font-medium leading-[18px] text-[#0f172a]"
+          style={{ letterSpacing: 0.26 }}
         >
           {title}
         </p>
-        <p className="truncate text-[12px] leading-4 text-[#64748b]">
+        <p className="truncate text-[11px] leading-4 text-[#64748b]">
           {subtitle && (
             <span className="text-[#475569]">{subtitle} · </span>
           )}
           <span className="font-bold text-[#0f172a]">{transactions}</span>
-          {" recent transactions"}
+          {" recent"}
         </p>
       </div>
       {selected && (
         <CheckCircle
-          size={16}
+          size={14}
           weight="fill"
-          className="absolute right-2 top-2 text-[#6a6bff]"
+          className="absolute right-1.5 top-1.5 text-[#6a6bff]"
         />
       )}
     </button>
@@ -573,17 +559,17 @@ function UnlockItem({
   tone?: "default" | "warning";
 }) {
   return (
-    <li className="flex items-center gap-2 py-1">
+    <li className="flex items-center gap-2 py-0.5">
       <CheckCircle
-        size={14}
+        size={13}
         weight="fill"
         className={tone === "warning" ? "text-[#e67f00]" : "text-[#16a34a]"}
       />
       <span
         className={
           tone === "warning"
-            ? "text-[12px] leading-4 text-[#e67f00]"
-            : "text-[12px] leading-4 text-[#334155]"
+            ? "text-[11.5px] leading-4 text-[#e67f00]"
+            : "text-[11.5px] leading-4 text-[#334155]"
         }
       >
         {text}
