@@ -1,8 +1,9 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import {
   ArrowRight,
+  BellRinging,
   BellSimple,
   Buildings,
   CheckCircle,
@@ -13,11 +14,49 @@ import {
   X,
 } from "@phosphor-icons/react/dist/ssr";
 
-type ModalKind = "none" | "replace" | "limit";
+type ModalKind = "none" | "select" | "replace" | "limit";
+
+type LocalityOption = { id: string; name: string; transactions: number };
+type PropertyOption = {
+  id: string;
+  name: string;
+  area: string;
+  transactions: number;
+};
+
+const LOCALITIES: LocalityOption[] = [
+  { id: "baner", name: "Baner", transactions: 12 },
+  { id: "wakad", name: "Wakad", transactions: 8 },
+  { id: "hinjewadi", name: "Hinjewadi", transactions: 8 },
+  { id: "shivajinagar", name: "Shivajinagar", transactions: 12 },
+  { id: "kharadi", name: "Kharadi", transactions: 8 },
+  { id: "viman-nagar", name: "Viman Nagar", transactions: 8 },
+];
+
+const PROPERTIES: PropertyOption[] = [
+  { id: "metro-business-park", name: "Metro Business Park", area: "Hinjewadi", transactions: 24 },
+  { id: "tech-park-one", name: "Tech Park One", area: "Magarpatta", transactions: 16 },
+  { id: "vista-tower", name: "Vista Tower", area: "Baner", transactions: 9 },
+  { id: "crown-plaza", name: "The Crown Plaza", area: "Wakad", transactions: 11 },
+  { id: "lakeview-heights", name: "Lakeview Heights", area: "Kharadi", transactions: 7 },
+  { id: "skyline-residences", name: "Skyline Residences", area: "Viman Nagar", transactions: 14 },
+];
 
 export function SubscribeCard() {
   const [subscribed, setSubscribed] = useState(false);
   const [modal, setModal] = useState<ModalKind>("none");
+  const [selectedLocalityId, setSelectedLocalityId] = useState<string | null>(null);
+  const [selectedPropertyId, setSelectedPropertyId] = useState<string | null>(null);
+
+  const selectedLocality =
+    LOCALITIES.find((l) => l.id === selectedLocalityId) ?? null;
+  const selectedProperty =
+    PROPERTIES.find((p) => p.id === selectedPropertyId) ?? null;
+
+  const handleActivate = () => {
+    setSubscribed(true);
+    setModal("none");
+  };
 
   return (
     <>
@@ -37,7 +76,7 @@ export function SubscribeCard() {
             </div>
           </div>
           <button
-            onClick={() => setSubscribed(true)}
+            onClick={() => setModal("select")}
             className="flex flex-shrink-0 items-center gap-1.5 rounded-lg bg-gradient-to-br from-[#3a4af0] to-[#2c39d6] px-3 py-2 text-[12.5px] font-semibold text-white shadow-md transition hover:opacity-95"
           >
             Start Free Subscription
@@ -64,14 +103,14 @@ export function SubscribeCard() {
           <div className="mt-4 grid grid-cols-2 gap-3">
             <SubscriptionTile
               icon={<MapPin size={18} weight="regular" />}
-              title="Baner, Pune"
-              stat="12 recent transactions"
+              title={selectedLocality?.name ?? "Baner, Pune"}
+              stat={`${selectedLocality?.transactions ?? 12} recent transactions`}
               newCount={3}
             />
             <SubscriptionTile
               icon={<Buildings size={18} weight="regular" />}
-              title="Metro Business Park"
-              stat="24 recent transactions"
+              title={selectedProperty?.name ?? "Metro Business Park"}
+              stat={`${selectedProperty?.transactions ?? 24} recent transactions`}
               newCount={12}
             />
           </div>
@@ -110,6 +149,16 @@ export function SubscribeCard() {
         </div>
       )}
 
+      {modal === "select" && (
+        <SubscriptionSelectionModal
+          selectedLocalityId={selectedLocalityId}
+          selectedPropertyId={selectedPropertyId}
+          onSelectLocality={setSelectedLocalityId}
+          onSelectProperty={setSelectedPropertyId}
+          onActivate={handleActivate}
+          onClose={() => setModal("none")}
+        />
+      )}
       {modal === "replace" && (
         <ReplaceSubscriptionModal onClose={() => setModal("none")} />
       )}
@@ -173,9 +222,11 @@ function SubscriptionTile({
 function ModalShell({
   children,
   onClose,
+  align = "center",
 }: {
   children: React.ReactNode;
   onClose: () => void;
+  align?: "center" | "top";
 }) {
   useEffect(() => {
     const onEsc = (e: KeyboardEvent) => {
@@ -191,13 +242,365 @@ function ModalShell({
 
   return (
     <div
-      className="fixed inset-0 z-50 grid place-items-center bg-[rgba(15,23,42,0.45)] px-4 backdrop-blur-[2px]"
+      className={
+        align === "top"
+          ? "fixed inset-0 z-50 flex items-start justify-center overflow-y-auto bg-[rgba(15,23,42,0.45)] p-4 pt-12 backdrop-blur-[2px]"
+          : "fixed inset-0 z-50 grid place-items-center overflow-y-auto bg-[rgba(15,23,42,0.45)] p-4 backdrop-blur-[2px]"
+      }
       onClick={onClose}
     >
       <div onClick={(e) => e.stopPropagation()}>{children}</div>
     </div>
   );
 }
+
+/* ----------------- Selection modal (Locality + Property) ----------------- */
+
+type SelectionTab = "locality" | "property";
+
+function SubscriptionSelectionModal({
+  selectedLocalityId,
+  selectedPropertyId,
+  onSelectLocality,
+  onSelectProperty,
+  onActivate,
+  onClose,
+}: {
+  selectedLocalityId: string | null;
+  selectedPropertyId: string | null;
+  onSelectLocality: (id: string | null) => void;
+  onSelectProperty: (id: string | null) => void;
+  onActivate: () => void;
+  onClose: () => void;
+}) {
+  const [tab, setTab] = useState<SelectionTab>("locality");
+  const [query, setQuery] = useState("");
+
+  const filteredLocalities = useMemo(
+    () =>
+      query.trim()
+        ? LOCALITIES.filter((l) =>
+            l.name.toLowerCase().includes(query.toLowerCase()),
+          )
+        : LOCALITIES,
+    [query],
+  );
+  const filteredProperties = useMemo(
+    () =>
+      query.trim()
+        ? PROPERTIES.filter(
+            (p) =>
+              p.name.toLowerCase().includes(query.toLowerCase()) ||
+              p.area.toLowerCase().includes(query.toLowerCase()),
+          )
+        : PROPERTIES,
+    [query],
+  );
+
+  const canActivate = !!selectedLocalityId && !!selectedPropertyId;
+
+  return (
+    <ModalShell onClose={onClose} align="top">
+      <div className="flex w-[786px] max-w-full flex-col gap-8 rounded-2xl bg-white p-6 shadow-[0_3.844px_8.648px_-2.883px_rgba(24,39,75,0.12),0_5.766px_20.18px_-1.922px_rgba(24,39,75,0.12)]">
+        {/* Header */}
+        <div className="flex flex-col gap-2">
+          <div className="flex flex-col items-stretch gap-6 border-b border-[#e2e8f0] pb-6">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-3">
+                <span className="grid size-[52px] flex-shrink-0 place-items-center rounded-[26px] bg-[#ebecff] text-[#3334de]">
+                  <BellRinging size={24} weight="bold" />
+                </span>
+                <div className="flex flex-col gap-1">
+                  <h2 className="text-[20px] font-extrabold leading-[26px] text-[#0e0e58]">
+                    Subscribe and Get Updates
+                  </h2>
+                  <p className="text-[14px] leading-5 text-[#475569]">
+                    Subscribe to 1 locality and 1 property on the free plan and
+                    get transaction updates
+                  </p>
+                </div>
+              </div>
+              <button
+                onClick={onClose}
+                aria-label="Close"
+                className="grid size-11 place-items-center rounded-md text-[#64748b] transition hover:bg-[#f3f5ff]"
+              >
+                <X size={22} weight="bold" />
+              </button>
+            </div>
+
+            {/* Tabs */}
+            <div className="flex w-full items-center rounded-lg bg-[#f8fafc] p-1">
+              <TabButton
+                label="Locality"
+                icon={<MapPin size={18} weight="bold" />}
+                active={tab === "locality"}
+                hasSelection={!!selectedLocalityId}
+                onClick={() => {
+                  setTab("locality");
+                  setQuery("");
+                }}
+              />
+              <TabButton
+                label="Property"
+                icon={<Buildings size={18} weight="bold" />}
+                active={tab === "property"}
+                hasSelection={!!selectedPropertyId}
+                onClick={() => {
+                  setTab("property");
+                  setQuery("");
+                }}
+              />
+            </div>
+
+            {/* Search */}
+            <label className="flex h-12 items-center gap-2 rounded-lg border border-[#c5c7ff] bg-white px-3 shadow-[0_0.961px_1.922px_-0.961px_rgba(24,39,75,0.12),0_1.922px_1.922px_-0.961px_rgba(24,39,75,0.08)] focus-within:border-[#6a6bff]">
+              <MagnifyingGlass size={18} weight="bold" className="text-[#94a3b8]" />
+              <input
+                type="text"
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+                placeholder={
+                  tab === "locality"
+                    ? "Search locality..."
+                    : "Search property..."
+                }
+                className="flex-1 bg-transparent text-[16px] leading-6 text-[#0f172a] placeholder:text-[#94a3b8] outline-none"
+              />
+            </label>
+          </div>
+
+          <p className="text-[12px] leading-4 text-[#64748b]">
+            Personalise your feed by subscribing to a locality and building for
+            transaction updates
+          </p>
+        </div>
+
+        {/* Body */}
+        <div className="flex flex-col gap-3">
+          <h3 className="text-[16px] font-semibold leading-6 text-[#0e0e58]">
+            Popular in Pune
+          </h3>
+
+          {tab === "locality" ? (
+            <div className="grid grid-cols-3 gap-3">
+              {filteredLocalities.length === 0 ? (
+                <EmptyResults label="No localities match your search" />
+              ) : (
+                filteredLocalities.map((l) => (
+                  <SuggestionCard
+                    key={l.id}
+                    icon={<MapPin size={14} weight="bold" />}
+                    title={l.name}
+                    transactions={l.transactions}
+                    selected={l.id === selectedLocalityId}
+                    onClick={() =>
+                      onSelectLocality(l.id === selectedLocalityId ? null : l.id)
+                    }
+                  />
+                ))
+              )}
+            </div>
+          ) : (
+            <div className="grid grid-cols-3 gap-3">
+              {filteredProperties.length === 0 ? (
+                <EmptyResults label="No properties match your search" />
+              ) : (
+                filteredProperties.map((p) => (
+                  <SuggestionCard
+                    key={p.id}
+                    icon={<Buildings size={14} weight="bold" />}
+                    title={p.name}
+                    subtitle={p.area}
+                    transactions={p.transactions}
+                    selected={p.id === selectedPropertyId}
+                    onClick={() =>
+                      onSelectProperty(p.id === selectedPropertyId ? null : p.id)
+                    }
+                  />
+                ))
+              )}
+            </div>
+          )}
+        </div>
+
+        {/* What You'll Unlock */}
+        <div
+          className="flex flex-col gap-2 rounded-[14px] border border-[#ffd8a8] p-3"
+          style={{ background: "rgba(255,242,224,0.5)" }}
+        >
+          <h4 className="text-[12px] font-semibold leading-4 text-[#0f172a]">
+            What You&apos;ll Unlock
+          </h4>
+          <ul className="flex flex-col gap-1">
+            <UnlockItem text="Get recent transaction updates" />
+            <UnlockItem text="Receive rent & sale alerts" />
+            <UnlockItem
+              text="Free users can subscribe to 1 locality & 1 building"
+              tone="warning"
+            />
+          </ul>
+        </div>
+
+        {/* Footer */}
+        <div className="flex w-full items-center justify-end gap-6 border-t border-[#f1f5f9] pt-6">
+          <button
+            onClick={onClose}
+            className="flex h-12 flex-1 items-center justify-center rounded-lg border-[1.5px] border-[#e2e8f0] bg-white px-5 text-[16px] font-semibold leading-5 text-[#334155] transition hover:bg-[#f8fafc]"
+          >
+            Cancel
+          </button>
+          <button
+            onClick={onActivate}
+            disabled={!canActivate}
+            className={
+              canActivate
+                ? "flex h-12 flex-1 items-center justify-center gap-2 rounded-lg bg-[#3334de] px-5 text-[16px] font-semibold leading-5 text-white transition hover:bg-[#2729c7]"
+                : "flex h-12 flex-1 cursor-not-allowed items-center justify-center gap-2 rounded-lg bg-[#e2e8f0] px-5 text-[16px] font-semibold leading-5 text-[#94a3b8]"
+            }
+          >
+            <ArrowRight size={18} weight="bold" />
+            Activate
+          </button>
+        </div>
+      </div>
+    </ModalShell>
+  );
+}
+
+function TabButton({
+  label,
+  icon,
+  active,
+  hasSelection,
+  onClick,
+}: {
+  label: string;
+  icon: React.ReactNode;
+  active: boolean;
+  hasSelection: boolean;
+  onClick: () => void;
+}) {
+  return (
+    <button
+      onClick={onClick}
+      className={
+        active
+          ? "flex flex-1 items-center justify-center gap-3 rounded-lg border border-[#c5c7ff] bg-[#ebecff] px-3 py-4 text-[14px] font-semibold leading-5 text-[#0e0e58] transition"
+          : "flex flex-1 items-center justify-center gap-3 rounded-lg bg-white px-3 py-4 text-[14px] font-medium leading-5 text-[#94a3b8] transition hover:text-[#0e0e58]"
+      }
+      style={{ letterSpacing: 0.28 }}
+    >
+      <span className={active ? "text-[#0e0e58]" : "text-[#94a3b8]"}>
+        {icon}
+      </span>
+      {label}
+      {hasSelection && (
+        <CheckCircle
+          size={14}
+          weight="fill"
+          className="text-[#16a34a]"
+        />
+      )}
+    </button>
+  );
+}
+
+function SuggestionCard({
+  icon,
+  title,
+  subtitle,
+  transactions,
+  selected,
+  onClick,
+}: {
+  icon: React.ReactNode;
+  title: string;
+  subtitle?: string;
+  transactions: number;
+  selected: boolean;
+  onClick: () => void;
+}) {
+  return (
+    <button
+      onClick={onClick}
+      className={
+        selected
+          ? "relative flex h-[72px] items-start gap-2 overflow-clip rounded-2xl border border-[#6a6bff] bg-[#ebecff] p-3 text-left shadow-[0_0_0_3px_rgba(106,107,255,0.15)] transition"
+          : "flex h-[72px] items-start gap-2 overflow-clip rounded-2xl bg-[#f8fafc] p-3 text-left transition hover:bg-[#eef0ff]"
+      }
+    >
+      <span
+        className={
+          selected
+            ? "grid size-6 flex-shrink-0 place-items-center rounded-xl bg-[#6a6bff] text-white"
+            : "grid size-6 flex-shrink-0 place-items-center rounded-xl bg-[#f1f5f9] text-[#0e0e58]"
+        }
+      >
+        {icon}
+      </span>
+      <div className="flex min-w-0 flex-col gap-1">
+        <p
+          className="truncate text-[14px] font-medium leading-5 text-[#0f172a]"
+          style={{ letterSpacing: 0.28 }}
+        >
+          {title}
+        </p>
+        <p className="truncate text-[12px] leading-4 text-[#64748b]">
+          {subtitle && (
+            <span className="text-[#475569]">{subtitle} · </span>
+          )}
+          <span className="font-bold text-[#0f172a]">{transactions}</span>
+          {" recent transactions"}
+        </p>
+      </div>
+      {selected && (
+        <CheckCircle
+          size={16}
+          weight="fill"
+          className="absolute right-2 top-2 text-[#6a6bff]"
+        />
+      )}
+    </button>
+  );
+}
+
+function UnlockItem({
+  text,
+  tone = "default",
+}: {
+  text: string;
+  tone?: "default" | "warning";
+}) {
+  return (
+    <li className="flex items-center gap-2 py-1">
+      <CheckCircle
+        size={14}
+        weight="fill"
+        className={tone === "warning" ? "text-[#e67f00]" : "text-[#16a34a]"}
+      />
+      <span
+        className={
+          tone === "warning"
+            ? "text-[12px] leading-4 text-[#e67f00]"
+            : "text-[12px] leading-4 text-[#334155]"
+        }
+      >
+        {text}
+      </span>
+    </li>
+  );
+}
+
+function EmptyResults({ label }: { label: string }) {
+  return (
+    <div className="col-span-3 grid place-items-center rounded-xl bg-[#f8fafc] py-8 text-[13px] text-[#64748b]">
+      {label}
+    </div>
+  );
+}
+
+/* ---------------- Replace subscription confirmation modal ---------------- */
 
 function ReplaceSubscriptionModal({ onClose }: { onClose: () => void }) {
   return (
@@ -261,6 +664,8 @@ function ReplaceSubscriptionModal({ onClose }: { onClose: () => void }) {
     </ModalShell>
   );
 }
+
+/* ---------------------- Free plan limit reached modal ---------------------- */
 
 function FreePlanLimitModal({
   onClose,
