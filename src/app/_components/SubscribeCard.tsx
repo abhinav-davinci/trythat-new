@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import {
   ArrowRight,
   BellRinging,
@@ -275,6 +275,21 @@ function SubscriptionSelectionModal({
 }) {
   const [tab, setTab] = useState<SelectionTab>("locality");
   const [query, setQuery] = useState("");
+  const [searchOpen, setSearchOpen] = useState(false);
+  const searchWrapRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    function onMouseDown(e: MouseEvent) {
+      if (
+        searchWrapRef.current &&
+        !searchWrapRef.current.contains(e.target as Node)
+      ) {
+        setSearchOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", onMouseDown);
+    return () => document.removeEventListener("mousedown", onMouseDown);
+  }, []);
 
   const filteredLocalities = useMemo(
     () =>
@@ -352,18 +367,91 @@ function SubscriptionSelectionModal({
           </div>
 
           {/* Search */}
-          <label className="flex h-10 items-center gap-2 rounded-lg border border-[#c5c7ff] bg-white px-3 shadow-[0_0.961px_1.922px_-0.961px_rgba(24,39,75,0.12),0_1.922px_1.922px_-0.961px_rgba(24,39,75,0.08)] focus-within:border-[#6a6bff]">
-            <MagnifyingGlass size={16} weight="bold" className="text-[#94a3b8]" />
-            <input
-              type="text"
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
-              placeholder={
-                tab === "locality" ? "Search locality..." : "Search property..."
-              }
-              className="flex-1 bg-transparent text-[14px] leading-5 text-[#0f172a] placeholder:text-[#94a3b8] outline-none"
-            />
-          </label>
+          <div ref={searchWrapRef} className="relative">
+            <label className="flex h-10 items-center gap-2 rounded-lg border border-[#c5c7ff] bg-white px-3 shadow-[0_0.961px_1.922px_-0.961px_rgba(24,39,75,0.12),0_1.922px_1.922px_-0.961px_rgba(24,39,75,0.08)] focus-within:border-[#6a6bff]">
+              <MagnifyingGlass size={16} weight="bold" className="text-[#94a3b8]" />
+              <input
+                type="text"
+                value={query}
+                onChange={(e) => {
+                  setQuery(e.target.value);
+                  setSearchOpen(true);
+                }}
+                onFocus={() => setSearchOpen(true)}
+                onKeyDown={(e) => {
+                  if (e.key === "Escape") {
+                    setSearchOpen(false);
+                    (e.target as HTMLInputElement).blur();
+                  }
+                }}
+                placeholder={
+                  tab === "locality" ? "Search locality..." : "Search property..."
+                }
+                className="flex-1 bg-transparent text-[14px] leading-5 text-[#0f172a] placeholder:text-[#94a3b8] outline-none"
+              />
+              {query && (
+                <button
+                  type="button"
+                  aria-label="Clear search"
+                  onClick={() => {
+                    setQuery("");
+                    setSearchOpen(true);
+                  }}
+                  className="grid size-5 place-items-center rounded-full text-[#94a3b8] transition hover:bg-[#f3f5ff] hover:text-[#0f172a]"
+                >
+                  <X size={12} weight="bold" />
+                </button>
+              )}
+            </label>
+
+            {searchOpen && (
+              <div className="absolute left-0 right-0 top-full z-10 mt-1.5 overflow-hidden rounded-lg border border-[#e2e8f0] bg-white shadow-[0_4px_12px_-4px_rgba(15,23,42,0.18)]">
+                <div className="max-h-[220px] overflow-y-auto py-1">
+                  {tab === "locality" ? (
+                    filteredLocalities.length === 0 ? (
+                      <DropdownEmpty label="No localities match your search" />
+                    ) : (
+                      filteredLocalities.map((l) => (
+                        <DropdownItem
+                          key={l.id}
+                          icon={<MapPin size={14} weight="bold" />}
+                          title={l.name}
+                          meta={`${l.transactions} recent transactions`}
+                          selected={l.id === selectedLocalityId}
+                          onClick={() => {
+                            onSelectLocality(
+                              l.id === selectedLocalityId ? null : l.id,
+                            );
+                            setSearchOpen(false);
+                            setQuery("");
+                          }}
+                        />
+                      ))
+                    )
+                  ) : filteredProperties.length === 0 ? (
+                    <DropdownEmpty label="No properties match your search" />
+                  ) : (
+                    filteredProperties.map((p) => (
+                      <DropdownItem
+                        key={p.id}
+                        icon={<Buildings size={14} weight="bold" />}
+                        title={p.name}
+                        meta={`${p.area} · ${p.transactions} recent transactions`}
+                        selected={p.id === selectedPropertyId}
+                        onClick={() => {
+                          onSelectProperty(
+                            p.id === selectedPropertyId ? null : p.id,
+                          );
+                          setSearchOpen(false);
+                          setQuery("");
+                        }}
+                      />
+                    ))
+                  )}
+                </div>
+              </div>
+            )}
+          </div>
         </div>
 
         {/* Body (scrollable if it ever overflows) */}
@@ -583,6 +671,66 @@ function EmptyResults({ label }: { label: string }) {
     <div className="col-span-3 grid place-items-center rounded-xl bg-[#f8fafc] py-8 text-[13px] text-[#64748b]">
       {label}
     </div>
+  );
+}
+
+function DropdownItem({
+  icon,
+  title,
+  meta,
+  selected,
+  onClick,
+}: {
+  icon: React.ReactNode;
+  title: string;
+  meta: string;
+  selected: boolean;
+  onClick: () => void;
+}) {
+  return (
+    <button
+      type="button"
+      onMouseDown={(e) => {
+        e.preventDefault();
+        onClick();
+      }}
+      className={
+        selected
+          ? "flex w-full items-center gap-2.5 bg-[#ebecff] px-3 py-2 text-left transition"
+          : "flex w-full items-center gap-2.5 px-3 py-2 text-left transition hover:bg-[#f8fafc]"
+      }
+    >
+      <span
+        className={
+          selected
+            ? "grid size-6 flex-shrink-0 place-items-center rounded-md bg-[#6a6bff] text-white"
+            : "grid size-6 flex-shrink-0 place-items-center rounded-md bg-[#f1f5f9] text-[#0e0e58]"
+        }
+      >
+        {icon}
+      </span>
+      <div className="flex min-w-0 flex-1 flex-col">
+        <span className="truncate text-[13px] font-medium leading-[18px] text-[#0f172a]">
+          {title}
+        </span>
+        <span className="truncate text-[11.5px] leading-4 text-[#64748b]">
+          {meta}
+        </span>
+      </div>
+      {selected && (
+        <CheckCircle
+          size={14}
+          weight="fill"
+          className="flex-shrink-0 text-[#6a6bff]"
+        />
+      )}
+    </button>
+  );
+}
+
+function DropdownEmpty({ label }: { label: string }) {
+  return (
+    <div className="px-3 py-3 text-[12.5px] text-[#64748b]">{label}</div>
   );
 }
 
